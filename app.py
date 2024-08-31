@@ -11,7 +11,6 @@ posts = [
         'author': 'Akshay Ravi',
         'date': '2024-08-30'
         'X-SECRET-KEY':'EMNBVCXZAWEDHYTFHJMNHG'
-        'X-INTERNAL-IP':192.168.59.10
     },
     {
         'id': 2,
