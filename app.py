@@ -13,34 +13,6 @@ posts = [
         'X-SECRET-KEY':'EMNBVCXZAWEDHYTFHJMNHG',
         'X-INTERNAL-IP': '192.168.10.11',
         'DB_Password':'ak$h@yh3r3'
-    },
-    {
-        'id': 2,
-        'title': 'Second Blog Post',
-        'content': 'This is the content of the second blog post.',
-        'author': 'Akshay Ravi',
-        'date': '2024-08-29'
-    },
-    {
-        'id': 3,
-        'title': 'Third Blog Post',
-        'content': 'This is the content of the third blog post.',
-        'author': 'Akshay Ravi',
-        'date': '2024-08-30'
-    },
-    {
-        'id': 4,
-        'title': 'Fourth Blog Post',
-        'content': 'This is the content of the fourth blog post.',
-        'author': 'Akshay Ravi',
-        'date': '2024-08-29'
-    },
-    {
-        'id': 5,
-        'title': 'Fifth Blog Post',
-        'content': 'This is the content of the fifth blog post.',
-        'author': 'Akshay Ravi',
-        'date': '2024-08-29'
     }
 ]
 
