@@ -1,0 +1,96 @@
+pipeline {
+    agent any
+    environment {
+        SONAR_HOME = tool "Sonar"
+    }
+    stages {
+        stage("Code clone from GitHub") {
+            steps {
+                git url: 'https://github.com/AkshayraviC09YC47/demowebistelatest.git', branch: 'main'
+            }
+        }
+        stage("SonarQube Quality Analysis") {
+            steps {
+                script {
+                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                        withSonarQubeEnv("Sonar") {
+                            sh """
+                            $SONAR_HOME/bin/sonar-scanner \
+                                -Dsonar.projectName=demowebistelatest \
+                                -Dsonar.projectKey=demowebistelatest \
+                                -Dsonar.exclusions=**/*.css
+                            """
+                        }
+                    }
+                }
+            }
+        }
+        stage("OWASP Dependency Check") {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'Dependency-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+        stage("Sonar Quality Gate Scan") {
+            steps {
+                script {
+                    timeout(time: 2, unit: "MINUTES") {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                            waitForQualityGate abortPipeline: false
+                        }
+                    }
+                }
+            }
+        }
+        stage("Trivy File System Scan") {
+            steps {
+                script {
+                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                        sh "trivy fs --format table -o trivy-fs-report.html ."
+                    }
+                }
+            }
+        }
+        stage("Docker Cleanup") {
+            steps {
+                script {
+                    // Clean up any existing container with the same name
+                    sh """
+                    docker stop my-demo-website || true
+                    docker rm my-demo-website || true
+                    """
+                    
+                    // Clean up dangling images
+                    sh """
+                    docker image prune -a -f
+                    """
+                }
+            }
+        }
+        stage("Docker Build") {
+            steps {
+                script {
+                    // Build the Docker image
+                    sh """
+                    docker build -t demowebsite .
+                    """
+                }
+            }
+        }
+        stage("Docker Run") {
+            steps {
+                script {
+                    // Run the Docker container
+                    sh """
+                    docker run -d -p 1336:1336 --name my-demo-website demowebsite
+                    """
+                }
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+    }
+}
