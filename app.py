@@ -20,14 +20,14 @@ posts = [
     },
     {
         'id': 3,
-        'title': 'First Blog Post',
+        'title': 'THird Blog Post',
         'content': 'This is the content of the third blog post.',
         'author': 'Akshay Ravi',
         'date': '2024-08-30'
     },
     {
         'id': 4,
-        'title': 'Second Blog Post',
+        'title': 'Fourth Blog Post',
         'content': 'This is the content of the fourth blog post.',
         'author': 'Akshay Ravi',
         'date': '2024-08-29'
