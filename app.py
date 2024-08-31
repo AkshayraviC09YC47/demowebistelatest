@@ -30,4 +30,5 @@ def post(post_id):
     return render_template('post.html', post=post)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=1336)
+    app.run(host='0.0.0.0', port=1336, debug=True)
+
