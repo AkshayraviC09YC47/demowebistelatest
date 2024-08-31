@@ -50,7 +50,7 @@ pipeline {
                     
                     // Clean up dangling images
                     sh """
-                    docker image prune -f
+                    docker image prune -a -f
                     """
                 }
             }
