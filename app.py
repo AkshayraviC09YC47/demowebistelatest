@@ -20,7 +20,7 @@ posts = [
     },
     {
         'id': 3,
-        'title': 'THird Blog Post',
+        'title': 'Third Blog Post',
         'content': 'This is the content of the third blog post.',
         'author': 'Akshay Ravi',
         'date': '2024-08-30'
