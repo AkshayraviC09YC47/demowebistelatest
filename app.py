@@ -10,6 +10,8 @@ posts = [
         'content': 'This is the content of the first blog post.',
         'author': 'Akshay Ravi',
         'date': '2024-08-30'
+        'X-SECRET-KEY':'EMNBVCXZAWEDHYTFHJMNHG'
+        'X-INTERNAL-IP':192.168.59.10
     },
     {
         'id': 2,
