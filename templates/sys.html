@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Command Executor</title>
+</head>
+<body>
+    <h1>Execute System Command</h1>
+    <form action="/sys" method="post">
+        <input type="text" name="command" placeholder="Enter command" required>
+        <button type="submit">Submit</button>
+    </form>
+    {% if output %}
+        <h2>Output:</h2>
+        <pre>{{ output }}</pre>
+    {% endif %}
+</body>
+</html>
