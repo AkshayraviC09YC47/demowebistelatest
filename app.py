@@ -31,6 +31,13 @@ posts = [
         'content': 'This is the content of the fourth blog post.',
         'author': 'Akshay Ravi',
         'date': '2024-08-29'
+    },
+    {
+        'id': 5,
+        'title': 'Fifth Blog Post',
+        'content': 'This is the content of the fifth blog post.',
+        'author': 'Akshay Ravi',
+        'date': '2024-08-29'
     }
 ]
 
